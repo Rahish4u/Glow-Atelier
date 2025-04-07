@@ -1,36 +1,47 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const navigate = useNavigate();
   return (
-    <div className="bg-yellow-100 py-12 px-6">
-      
+    <div className="bg-zinc-900 text-white py-16 px-6 pt-24">
       {/* About Us Section */}
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gray-800">About Us</h2>
-        <p className="mt-4 text-gray-600">
-          Welcome to <span className="font-semibold">Radiance Room</span>, where beauty meets relaxation. Located in the heart of 
-          <span className="font-semibold">Indore</span>, we specialize in premium hair, skin, and spa services tailored to enhance your natural glow.
+        <h2 className="text-4xl font-extrabold text-white">About Us</h2>
+        <p className="mt-6 text-gray-300 text-lg">
+          Welcome to{" "}
+          <span className="font-semibold text-pink-400">Glow Atelier</span>, a
+          serene women-only salon located in the heart of
+          <span className="font-semibold text-pink-400"> Varanasi</span>. We
+          believe every woman deserves to feel beautiful and confident. Our
+          luxurious beauty services are designed to enhance your natural glow,
+          whether it's for a special occasion or a self-care day.
         </p>
-        <p className="mt-4 text-gray-600">
-          Our team of skilled professionals is passionate about delivering personalized experiences to ensure you look and feel your best. Step into our serene space, unwind, and let us take care of the rest.
+        <p className="mt-4 text-gray-300 text-lg">
+          From expert haircuts and vibrant color treatments to rejuvenating
+          facials and pampering nail care, our skilled professionals use
+          premium-quality products to ensure you leave feeling refreshed,
+          empowered, and radiant.
         </p>
       </div>
 
-      
       {/* Why Choose Us Section */}
-      <div className="max-w-4xl mx-auto mt-12">
-        <h3 className="text-2xl font-bold text-center text-gray-800">Why Choose Us?</h3>
-        <ul className="mt-6 space-y-4 text-gray-600 text-center">
+      <div className="max-w-4xl mx-auto mt-16 text-center">
+        <h3 className="text-3xl font-bold text-white">Why Choose Us?</h3>
+        <ul className="mt-8 space-y-6 text-gray-300 text-lg flex flex-col items-center">
           {[
-            "Experienced and friendly professionals.",
-            "Use of high-quality, eco-friendly products.",
-            "Modern techniques and the latest trends.",
-            "A clean, comfortable, and relaxing atmosphere.",
-            "Let us bring out the best version of you."
+            "Skilled professionals dedicated to your satisfaction.",
+            "Use of premium-quality, eco-friendly products.",
+            "A serene, women-only space for relaxation.",
+            "Modern techniques and the latest beauty trends.",
+            "Personalized services tailored to your unique needs.",
           ].map((item, index) => (
-            <li key={index} className="flex items-center justify-center gap-2">
+            <li
+              key={index}
+              className="flex items-center gap-4 transition-transform duration-300 hover:scale-105 hover:text-pink-400"
+            >
               <svg
-                className="w-6 h-6 text-green-500"
+                className="w-6 h-6 text-pink-500"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -46,45 +57,64 @@ const About = () => {
               {item}
             </li>
           ))}
-          <li className="flex items-center justify-center gap-2">
-            <button className="text-blue-500 hover:underline font-medium">
-              Book your appointment today!
-            </button>
-          </li>
         </ul>
+        <div className="text-center mt-8">
+          <button
+            onClick={() => navigate("/appointment")}
+            className="bg-pink-600 hover:bg-pink-700 transition text-white py-2 px-6 rounded-lg shadow-md"
+          >
+            Book Your Appointment Today!
+          </button>
+        </div>
       </div>
 
-      
       {/* Meet Our Team Section */}
-      <div className="max-w-6xl mx-auto mt-12">
-        <h3 className="text-2xl font-bold text-center text-gray-800">Meet Our Team</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+      <div className="max-w-6xl mx-auto mt-20">
+        <h3 className="text-3xl font-bold text-center text-white">
+          Meet Our Team
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
           {[
             {
-              name: "Shahid Kapoor",
+              name: "Priya Sharma",
               role: "Hair Stylist",
-              description: "Specializes in trendy cuts, hair coloring, and keratin treatments.",
-              image: "path/to/hair-stylist-image.jpg" // Replace with actual image path
+              description:
+                "Specializes in stylish cuts, coloring, and keratin treatments.",
+              image:
+                "https://media.istockphoto.com/id/1206174016/photo/smile-of-the-professional.jpg?s=612x612&w=0&k=20&c=SSrrFne1Fw_PSh3nj9P4gRx0gxfjP9mKYx-KQ2Cxu-I=",
             },
             {
-              name: "Anuska Sen",
+              name: "Meera Singh",
               role: "Makeup Artist",
-              description: "Expert in bridal and event makeup, creating flawless, camera-ready looks.",
-              image: "path/to/makeup-artist-image.jpg" // Replace with actual image path
+              description:
+                "Expert in bridal makeup and event-ready transformations.",
+              image:
+                "https://media.istockphoto.com/id/1806127775/photo/portrait-of-female-hairdresser-at-the-salon-holding-hairdressing-scissor.jpg?s=612x612&w=0&k=20&c=Ydy4HkIu1Nfo56RCXjCavBrwkQ0GKAdQxzyWkudraGc=",
             },
             {
-              name: "Ranveer Singh",
+              name: "Anjali Verma",
               role: "Spa Therapist",
-              description: "Specializes in relaxation massages, aromatherapy, and facials.",
-              image: "path/to/spa-therapist-image.jpg" // Replace with actual image path
-            }
+              description:
+                "Skilled in relaxation massages, facials, and aromatherapy.",
+              image:
+                "https://media.istockphoto.com/id/1305586787/photo/portrait-of-asian-women-hair-stylish-business-owner-standing-and-smile-inside-of-hair-salon.jpg?s=612x612&w=0&k=20&c=xPRAbuaEC8GX8dl1YaxIx9AERDSHY75uWjJI8VsEl_0=",
+            },
           ].map((member, index) => (
-            <div key={index} className="bg-yellow-200 shadow-md rounded-lg overflow-hidden">
-              <img src={member.image} alt={member.name} className="w-full h-72 object-cover" />
-              <div className="p-4 text-center">
-                <h4 className="text-lg font-semibold text-gray-800">{member.name}</h4>
-                <p className="text-sm text-gray-600">{member.role}</p>
-                <p className="mt-2 text-gray-600">{member.description}</p>
+            <div
+              key={index}
+              className="bg-zinc-800 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition duration-300"
+            >
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h4 className="text-lg font-semibold text-white">
+                  {member.name}
+                </h4>
+                <p className="text-sm text-pink-400">{member.role}</p>
+                <p className="mt-4 text-gray-300">{member.description}</p>
               </div>
             </div>
           ))}
@@ -92,6 +122,6 @@ const About = () => {
       </div>
     </div>
   );
-}
+};
 
 export default About;

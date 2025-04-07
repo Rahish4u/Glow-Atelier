@@ -1,11 +1,14 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Components/Home/home";
+import Home from "./Components/Home/HomePage";
 import Navbar from "./Components/Home/Navbar";
 import Services from "./Components/Pages/Services";
 import BookingForm from "./Components/Pages/BookingForm";
 import Footer from "./Components/Home/Footer";
 import About from "./Components/Pages/About";
+import Login from "./Components/Auth/Login";
+import Register from "./Components/Auth/Signup";
+import ProtectBookingRoute from "./Components/Auth/ProtectBookingRoute";
 
 
 const App = () => {
@@ -39,11 +42,24 @@ const App = () => {
               </>
             }
           />
+          <Route element={<ProtectBookingRoute />}>
+            <Route path="/appointment" element={<BookingForm />} />
+          </Route>
+
           <Route
-            path="/appointment"
+            path="/login"
             element={
               <>
-                <BookingForm /> {/* Booking Form Component */}
+                <Login /> {/* Login Form Component */}
+              </>
+            }
+          />
+
+          <Route
+            path="/register"
+            element={
+              <>
+                <Register /> {/* Register Form Component */}
               </>
             }
           />
