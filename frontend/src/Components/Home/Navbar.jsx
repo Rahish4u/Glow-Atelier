@@ -48,8 +48,8 @@ function Navbar() {
           style={{
             backgroundColor: "rgba(255, 255, 255, 0.05)", // ultra transparent
             border: "1px solid rgba(255, 255, 255, 0.2)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
           }}
         >
@@ -87,7 +87,7 @@ function Navbar() {
           ) : (
             <Link
               to="/login"
-              className="bg-pink-600 hidden md:flex rounded-lg py-2 px-4 text-gray-50 text-base"
+              className="bg-pink-600 hover:shadow-pink-400 hover:shadow-lg transition-all duration-300 hidden md:flex rounded-lg py-2 px-4 text-gray-50 text-base"
             >
               Login
             </Link>
@@ -117,8 +117,8 @@ function Navbar() {
           style={{
             backgroundColor: "rgba(255, 255, 255, 0.05)", // ultra transparent
             border: "1px solid rgba(255, 255, 255, 0.2)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
           }}
         >

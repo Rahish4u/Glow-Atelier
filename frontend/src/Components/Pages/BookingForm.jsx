@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Select from "react-select";
 
 const BookingForm = () => {
   const [services, setServices] = useState([]);
@@ -51,6 +52,43 @@ const BookingForm = () => {
     }
   };
 
+  const serviceOptions = services.map((service) => ({
+    value: service._id,
+    label: `${service.name} - ₹${service.price}`,
+  }));
+
+  const reactSelectStyles = {
+    control: (base, state) => ({
+      ...base,
+      background: "linear-gradient(to right, #9ca3af, #ec4899)",
+      color: "white",
+      border: "1px solid rgba(255, 255, 255, 0.2)",
+      borderRadius: "0.5rem",
+      padding: "2px",
+      boxShadow: state.isFocused ? "0 0 0 1px #ec4899" : "",
+    }),
+    menu: (base) => ({
+      ...base,
+      backgroundColor: "#1f2937", // Tailwind gray-800
+      color: "white",
+      borderRadius: "0.5rem",
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isFocused ? "#ec4899" : "#1f2937",
+      color: "white",
+      cursor: "pointer",
+    }),
+    singleValue: (base) => ({
+      ...base,
+      color: "white",
+    }),
+    placeholder: (base) => ({
+      ...base,
+      color: "rgba(255,255,255,0.5)",
+    }),
+  };
+
   return (
     <div className="min-h-screen relative flex items-start justify-center px-4 pt-40 pb-12">
       <img
@@ -59,7 +97,7 @@ const BookingForm = () => {
         className="absolute top-0 left-0 w-full h-full object-cover brightness-50 -z-10"
       />
 
-      <div className="w-full max-w-md p-8 rounded-2xl backdrop-blur-md bg-white/5 border border-white/20 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+      <div className="w-full max-w-md p-8 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/20 shadow-2xl transform transition-all duration-300">
         <div className="text-center mb-6">
           <i className="fa-solid fa-calendar-check text-4xl text-pink-500"></i>
           <h2 className="text-2xl font-bold mt-4 text-white">Book a Service</h2>
@@ -78,25 +116,19 @@ const BookingForm = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4 text-white">
-          {/* Select Service */}
+          {/* Service Dropdown with react-select */}
           <div>
             <label className="block mb-2 text-sm font-medium text-white">Select Service</label>
-            <select
-              name="serviceId"
-              value={formData.serviceId}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-gray-400 to-pink-600 text-black outline-none border border-white hover:border-white/30 focus:border-pink-500/50 transition-all duration-300 backdrop-blur-md"
-            >
-              <option value="" disabled>
-                Choose a service
-              </option>
-              {services.map((service) => (
-                <option key={service._id} value={service._id}>
-                  {service.name} - ₹{service.price}
-                </option>
-              ))}
-            </select>
+            <Select
+              options={serviceOptions}
+              value={serviceOptions.find((opt) => opt.value === formData.serviceId) || null}
+              onChange={(selected) =>
+                setFormData({ ...formData, serviceId: selected.value })
+              }
+              styles={reactSelectStyles}
+              placeholder="Choose a service"
+              isSearchable
+            />
           </div>
 
           {/* Name */}

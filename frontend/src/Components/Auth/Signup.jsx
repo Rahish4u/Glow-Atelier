@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +39,10 @@ const Register = () => {
           navigate("/login");
         } else {
           const data = await response.json();
-          setErrors({ ...errors, apiError: data.message || "Registration failed" });
+          setErrors({
+            ...errors,
+            apiError: data.message || "Registration failed",
+          });
         }
       } catch (error) {
         setErrors({ ...errors, apiError: "An error occurred" });
@@ -54,8 +58,10 @@ const Register = () => {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
       errors.email = "Invalid email format";
     if (!data.password) errors.password = "Password is required";
-    else if (data.password.length < 6) errors.password = "Minimum 6 characters required";
-    if (!data.confirmPassword) errors.confirmPassword = "Confirm Password is required";
+    else if (data.password.length < 6)
+      errors.password = "Minimum 6 characters required";
+    if (!data.confirmPassword)
+      errors.confirmPassword = "Confirm Password is required";
     else if (data.password !== data.confirmPassword)
       errors.confirmPassword = "Passwords do not match";
     return errors;
@@ -64,18 +70,22 @@ const Register = () => {
   return (
     <div className="min-h-screen relative flex items-start justify-center px-4 pt-40 pb-12">
       <img
-        src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c"
+        src="https://images.unsplash.com/photo-1629397685944-7073f5589754?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Barbershop Background"
         className="absolute top-0 left-0 w-full h-full object-cover brightness-50 -z-10"
       />
-      <div className="w-full max-w-md p-8 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/20 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+      <div className="w-full max-w-md p-8 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/20 shadow-2xl transform transition-all duration-300">
         <div className="text-center mb-6">
           <i className="fa-solid fa-bag-shopping text-4xl text-pink-500"></i>
-          <h2 className="text-2xl font-bold mt-4 text-white">Join Glow Atelier</h2>
+          <h2 className="text-2xl font-bold mt-4 text-white">
+            Join Glow Atelier
+          </h2>
         </div>
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
-            <label className="block mb-2 text-sm font-medium text-white">Name</label>
+            <label className="block mb-2 text-sm font-medium text-white">
+              Name
+            </label>
             <input
               type="text"
               name="name"
@@ -87,11 +97,15 @@ const Register = () => {
                 errors.name ? "border-red-500" : "border-white"
               } hover:border-white/30 focus:border-pink-500/50 transition-all duration-300 backdrop-blur-md`}
             />
-            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
           </div>
 
           <div>
-            <label className="block mb-2 text-sm font-medium text-white">Email</label>
+            <label className="block mb-2 text-sm font-medium text-white">
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -103,16 +117,20 @@ const Register = () => {
                 errors.email ? "border-red-500" : "border-white"
               } hover:border-white/30 focus:border-pink-500/50 transition-all duration-300 backdrop-blur-md`}
             />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
           </div>
 
           <div>
-            <label className="block mb-2 text-sm font-medium text-white">Password</label>
+            <label className="block mb-2 text-sm font-medium text-white">
+              Password
+            </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder="Password"
+                placeholder="Your password"
                 value={formData.password}
                 onChange={handleChange}
                 required
@@ -120,19 +138,22 @@ const Register = () => {
                   errors.password ? "border-red-500" : "border-white"
                 } hover:border-white/30 focus:border-pink-500/50 transition-all duration-300 backdrop-blur-md`}
               />
-              <button
-                type="button"
+              <span
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-2 right-4 text-xs text-white/70"
+                className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-white/80"
               >
-                {showPassword ? "Hide" : "Show"}
-              </button>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
-            {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password}</p>
+            )}
           </div>
 
           <div>
-            <label className="block mb-2 text-sm font-medium text-white">Confirm Password</label>
+            <label className="block mb-2 text-sm font-medium text-white">
+              Confirm Password
+            </label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -145,18 +166,23 @@ const Register = () => {
                   errors.confirmPassword ? "border-red-500" : "border-white"
                 } hover:border-white/30 focus:border-pink-500/50 transition-all duration-300 backdrop-blur-md`}
               />
-              <button
-                type="button"
+              <span
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute top-2 right-4 text-xs text-white/70"
+                className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-white/80"
               >
-                {showConfirmPassword ? "Hide" : "Show"}
-              </button>
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
-            {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword}</p>}
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+            )}
           </div>
 
-          {errors.apiError && <p className="text-red-500 text-sm text-center">{errors.apiError}</p>}
+          {errors.apiError && (
+            <p className="text-red-500 text-sm text-center">
+              {errors.apiError}
+            </p>
+          )}
 
           <button
             type="submit"
