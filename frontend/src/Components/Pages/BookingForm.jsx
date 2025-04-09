@@ -13,7 +13,7 @@ const BookingForm = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/services")
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/services`)
       .then((res) => res.json())
       .then((data) => setServices(data))
       .catch((err) => console.error("Error fetching services:", err));
@@ -33,7 +33,7 @@ const BookingForm = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/bookings", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

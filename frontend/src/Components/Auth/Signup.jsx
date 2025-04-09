@@ -27,7 +27,7 @@ const Register = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await fetch("/api/auth/register", {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
