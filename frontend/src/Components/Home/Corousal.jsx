@@ -22,7 +22,7 @@ function Corousal() {
       className="relative overflow-hidden" // Set relative positioning and overflow hidden
     >
       {images.map((image, index) => (
-        <div key={index} className="carousel-item flex justify-center items-center min-w-full h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] mt-4 mx-2 ">
+        <div key={index} className="carousel-item flex justify-center items-center min-w-full h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] mt-12 mx-2 ">
           <img src={image} alt={`Slide ${index + 1}`} className="w-full h-full object-fit rounded-lg shadow-lg" />
         </div>
       ))}

@@ -73,7 +73,7 @@ const Services = () => {
     <div className="bg-zinc-900 text-white min-h-screen py-6 px-6 ">
       {/* Keep Corousal on Top in Service page */}
        <Corousal/>
-      <h1 className="text-4xl font-extrabold text-white text-center mb-14 mt-14">Our Services</h1>
+      <h1 className="text-4xl font-extrabold text-white text-center mb-8 mt-8">Our Services</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {services.map((service) => (
