@@ -44,7 +44,7 @@ function Navbar() {
     <>
       <header className="h-20 flex justify-center items-center fixed w-full left-1/2 -translate-x-1/2 mt-2 z-[1000] pointer-events-none">
         <div
-          className="flex items-center justify-evenly relative w-[96%] md:w-[90%] lg:w-[1000px] xl:w-[1200px] h-[3.85rem] rounded-xl backdrop-blur-md border border-opacity-50 z-[100] pointer-events-auto"
+          className="flex items-center justify-evenly relative w-[96%] md:w-[90%] lg:w-[1000px] xl:w-[1200px] h-[3.85rem] rounded-xl backdrop-blur-md border border-opacity-50 z-[100] pointer-events-auto px-4 transition-all duration-500"
           style={{
             backgroundColor: "rgba(255, 255, 255, 0.05)", // ultra transparent
             border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -53,7 +53,7 @@ function Navbar() {
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <h1 className="text-xl font-bold text-white uppercase">
+          <h1 className="text-xl font-bold text-white uppercase transition-all duration-300 hover:text-pink-400">
             Glow Atelier
           </h1>
 
