@@ -85,12 +85,15 @@ function Navbar() {
               Logout
             </button>
           ) : (
-            <Link
-              to="/login"
+            <button
+              onClick={() => {
+                navigate("/login");
+                window.scrollTo(0, 0); // scroll to top
+              }}
               className="bg-pink-600 hover:shadow-pink-400 hover:shadow-lg transition-all duration-300 hidden md:flex rounded-lg py-2 px-4 text-gray-50 text-base"
             >
               Login
-            </Link>
+            </button>
           )}
 
           {/* Hamburger for mobile */}
@@ -155,13 +158,16 @@ function Navbar() {
                   Logout
                 </button>
               ) : (
-                <Link
-                  to="/login"
-                  onClick={handleShow}
+                <button
+                  onClick={() => {
+                    handleShow();
+                    navigate("/login");
+                    window.scrollTo(0, 0); // scroll to top
+                  }}
                   className="bg-pink-600 rounded-lg py-2 px-4 text-gray-50 text-base hover:shadow-[0_0_10px_#e91e63] transition-all duration-300"
                 >
                   Login
-                </Link>
+                </button>
               )}
             </ul>
           </nav>
